@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/modal"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="20dp"
+            android:elevation="20dp"
+            android:background="@drawable/messageround">
+
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/group_74" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="13dp"
+                android:textSize="12dp"
+                android:text="3분전"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/modal"
+                 />
+
+
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="6dp"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:text="아래글에 차라나님이 관심있어요"
+                android:textColor="@color/black"
+                android:textFontWeight="1000"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toBottomOf="@id/textView5"
+                />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="3dp"
+                android:textFontWeight="400"
+                android:textSize="12dp"
+                android:text="제가 3시쯤에 쌀국수를 먹으러가.."
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="100dp"
+            android:elevation="5dp"
+            android:background="@drawable/messageround">
+
+
+            <ImageView
+                android:id="@+id/messageImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/group_74" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="22dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:textFontWeight="800"
+                android:textStyle="bold"
+                android:text="차라나"
+                app:layout_constraintStart_toEndOf="@+id/messageImage"
+                app:layout_constraintTop_toTopOf="@+id/message"
+                />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:layout_marginLeft="6dp"
+                android:text="04/28 12:38"
+                android:textSize="12dp"
+                app:layout_constraintStart_toEndOf="@+id/name"
+                app:layout_constraintTop_toTopOf="@id/message"
+                 />
+
+            <TextView
+                android:id="@+id/messageContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="6dp"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:text="아래글에 차라나님이 관심있어요"
+                android:textColor="@color/black"
+                android:textFontWeight="600"
+                app:layout_constraintStart_toEndOf="@+id/messageImage"
+                app:layout_constraintTop_toBottomOf="@id/name"
+                />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="13.5dp"
+                android:layout_marginTop="13.5dp"
+                android:background="@drawable/messagepop"
+                android:gravity="center"
+                android:textColor="@color/white"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
