@@ -78,6 +78,18 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
                 />
 
+            <ImageView
+                android:id="@+id/favorite"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/favorite"
+                android:layout_marginRight="60dp"
+                android:translationZ="-5dp"
+                android:elevation="5dp"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,7 +99,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="100dp"
-            android:elevation="5dp"
+            android:elevation="20dp"
             android:background="@drawable/messageround">
 
 
@@ -113,7 +125,7 @@
                 android:textStyle="bold"
                 android:text="차라나"
                 app:layout_constraintStart_toEndOf="@+id/messageImage"
-                app:layout_constraintTop_toTopOf="@+id/message"
+                app:layout_constraintTop_toTopOf="parent"
                 />
 
             <TextView
@@ -121,12 +133,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
-                android:layout_marginLeft="6dp"
                 android:text="04/28 12:38"
                 android:textSize="12dp"
-                app:layout_constraintStart_toEndOf="@+id/name"
-                app:layout_constraintTop_toTopOf="@id/message"
-                 />
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/textView8"/>
 
             <TextView
                 android:id="@+id/messageContent"
@@ -147,15 +160,15 @@
                 android:id="@+id/textView8"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:text="4"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginRight="13.5dp"
-                android:layout_marginTop="13.5dp"
+                android:layout_marginTop="15dp"
                 android:background="@drawable/messagepop"
                 android:gravity="center"
+                android:text="4"
                 android:textColor="@color/white"
-                />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

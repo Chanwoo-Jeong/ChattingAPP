@@ -47,7 +47,6 @@ class ChatAdapter(private val items: List<ChatData>, private val context: Contex
 
             //text 위치 조정정
            if(item.mynickName.equals(mynickName)){
-               rv_msg.gravity =
 
             } else {
 

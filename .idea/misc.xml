@@ -4,15 +4,17 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/drawable/chattingbackground.xml" value="0.193" />
+        <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/drawable/handsUploadBtn.xml" value="0.234" />
+        <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/drawable/handsupuploadBtn.xml" value="0.234" />
         <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/drawable/messageround.xml" value="0.3635" />
         <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/activity_chat.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/activity_main.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/activity_main2.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/activity_main_Uchat.xml" value="0.29791666666666666" />
-        <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/chatting.xml" value="0.23177083333333334" />
-        <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/handsupbtn.xml" value="0.20742753623188406" />
+        <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/chatting.xml" value="0.22" />
+        <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/handsupbtn.xml" value="0.22" />
         <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/rv_item.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/rv_item_alert.xml" value="0.23333333333333334" />
+        <entry key="..\:/Users/krict/.android/Chatting/app/src/main/res/layout/rv_item_alert.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/krict/.android/TestApp/app/src/main/res/drawable-v24/messageRound.xml" value="0.313" />
         <entry key="..\:/Users/krict/.android/TestApp/app/src/main/res/drawable-v24/messagepop.xml" value="0.3635" />
         <entry key="..\:/Users/krict/.android/TestApp/app/src/main/res/drawable-v24/round.xml" value="0.313" />

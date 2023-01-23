@@ -17,20 +17,20 @@
         app:layout_constraintEnd_toStartOf="@+id/recycler_chatrooms"
         android:layout_marginTop="26dp">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/alertBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="알람"
             android:textColor="@color/black"
             android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/white"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@id/msgBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +41,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/alertBtn"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
