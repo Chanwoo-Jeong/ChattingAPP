@@ -18,12 +18,12 @@ import java.time.format.DateTimeFormatter
 import io.socket.client.IO;
 import io.socket.client.Socket;
 
-
-fun WhatTime(): String? {
-    val dateTime = LocalDateTime.now()
-        .format(DateTimeFormatter.ofPattern("hh:mm"))
-    return dateTime
-}
+//
+//fun WhatTime(): String? {
+//    val dateTime = LocalDateTime.now()
+//        .format(DateTimeFormatter.ofPattern("hh:mm"))
+//    return dateTime
+//}
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewbinding: ActivityMainBinding

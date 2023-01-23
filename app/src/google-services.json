@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "980280374078",
+    "firebase_url": "https://chatting-aaade-default-rtdb.firebaseio.com",
+    "project_id": "chatting-aaade",
+    "storage_bucket": "chatting-aaade.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980280374078:android:bf9131a41688830a35f26f",
+        "android_client_info": {
+          "package_name": "com.example.testapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980280374078-2lnocqb5ulm5dct4ojcnqcejppc2g156.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNDG6deiqgTSGUn9MF8AY4CHnf-zedaMQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980280374078-2lnocqb5ulm5dct4ojcnqcejppc2g156.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
