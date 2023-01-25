@@ -80,15 +80,25 @@
 
             <ImageView
                 android:id="@+id/favorite"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/favorite"
-                android:layout_marginRight="60dp"
+                android:layout_marginRight="80dp"
                 android:translationZ="-5dp"
                 android:elevation="5dp"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:translationZ="-5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/favorite"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/airplane" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -149,7 +159,7 @@
                 android:layout_marginTop="6dp"
                 android:textSize="12dp"
                 android:textStyle="bold"
-                android:text="아래글에 차라나님이 관심있어요"
+                android:text="안녕하세요 글보고 연락드려요 수업끝.."
                 android:textColor="@color/black"
                 android:textFontWeight="600"
                 app:layout_constraintStart_toEndOf="@+id/messageImage"
@@ -169,6 +179,64 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/postbox"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="100dp"
+            android:elevation="20dp"
+            android:background="@drawable/messageround">
+
+
+            <ImageView
+                android:id="@+id/postimage"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:layout_marginLeft="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:srcCompat="@drawable/group_74" />
+
+
+            <TextView
+                android:id="@+id/information"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="차라나"
+                android:textSize="12dp"
+                app:layout_constraintStart_toEndOf="@+id/postimage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/postContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="6dp"
+                android:lines="2"
+                android:text="제가 3시쯤에 수업이 끝날거 같은데 3시 근처에서 맛있는거 먹을사람?"
+                android:textColor="@color/black"
+                android:textFontWeight="600"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/postimage"
+                app:layout_constraintTop_toBottomOf="@id/information" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

@@ -23,7 +23,7 @@ fun WhatTime(): String? {
 
 class ChatActivity : AppCompatActivity() {
     private lateinit var viewbinding: ActivityMainUchatBinding
-    var nick : String = "nick2"
+    var nick : String = "nick1"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,8 +36,6 @@ class ChatActivity : AppCompatActivity() {
 
 //        var chat = ChatData(nick,"hi", WhatTime().toString())
 //        myRef.setValue(chat)
-
-
 
         val items: ArrayList<ChatData> = arrayListOf()
 
