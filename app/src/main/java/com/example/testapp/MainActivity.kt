@@ -1,6 +1,7 @@
 package com.example.testapp
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
                 .beginTransaction()
                 .replace(viewbinding.frameFragment.id,FirstFragment())
                 .commitAllowingStateLoss()
+            viewbinding.alertBtn.setTextColor(Color.parseColor("#000000"))
+            viewbinding.msgBtn.setTextColor(Color.parseColor("#D3D3D3"))
         }
 
         viewbinding.msgBtn.setOnClickListener {
@@ -37,6 +40,8 @@ class MainActivity : AppCompatActivity() {
                 .beginTransaction()
                 .replace(viewbinding.frameFragment.id,SecondFragment())
                 .commitAllowingStateLoss()
+            viewbinding.alertBtn.setTextColor(Color.parseColor("#D3D3D3"))
+            viewbinding.msgBtn.setTextColor(Color.parseColor("#000000"))
         }
 
         getResultText = registerForActivityResult(

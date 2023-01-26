@@ -29,6 +29,19 @@ class FirstFragment : Fragment() {
     ): View {
 
         viewBinding = FragmentFirstBinding.inflate(layoutInflater)
+        // Write a message to the database
+        val database = Firebase.database
+        val myRef = database.getReference("postRoom")
+
+        val bundle = arguments
+        if(bundle != null) {
+            val name: String? = this.arguments?.getString("name")
+            val postContent: String? = this.arguments?.getString("postContent")
+            var postRoom = PostData(name.toString(),postContent.toString())
+            myRef.push().setValue(postRoom)
+        } else{
+            Log.d("error", "번들이 비었습니다.")
+        }
 
         val items: ArrayList<PostData> = arrayListOf()
         //리사이클러뷰 어댑터 연결
@@ -37,10 +50,7 @@ class FirstFragment : Fragment() {
         rv.adapter = rvAdapter
         rv.layoutManager = LinearLayoutManager(requireActivity())
 
-        // Write a message to the database
-        val database = Firebase.database
-        val myRef = database.getReference("postRoom")
-        val myRef2 = database.getReference("postRoom").child("room")
+//        val myRef2 = database.getReference("postRoom").child("room")
 
         myRef.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
@@ -59,15 +69,7 @@ class FirstFragment : Fragment() {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-        val bundle = arguments
-        if(bundle != null) {
-            val name: String? = this.arguments?.getString("name")
-            val postContent: String? = this.arguments?.getString("postContent")
-            var postRoom = PostData(name.toString(),postContent.toString())
-            myRef.push().setValue(postRoom)
-        } else{
-            Log.d("error", "번들이 비었습니다.")
-        }
+
 
 
         return  viewBinding.root

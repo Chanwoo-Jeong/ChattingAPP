@@ -5,7 +5,9 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.testapp.databinding.ActivityMainBinding
 import com.example.testapp.databinding.ActivityMainUchatBinding
+import com.example.testapp.databinding.FragmentSecondBinding
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,16 +25,21 @@ fun WhatTime(): String? {
 
 class ChatActivity : AppCompatActivity() {
     private lateinit var viewbinding: ActivityMainUchatBinding
-    var nick : String = "nick1"
+    private lateinit var aviewbinding : ActivityMainBinding
+    var nick : String = "nick2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val intent = intent
+        val id = intent.getStringExtra("id")
+        Log.d("ChatActivity name", id.toString())
 
         viewbinding = ActivityMainUchatBinding.inflate(layoutInflater)
         setContentView(viewbinding.root)
 
         // Write a message to the database
         val database = Firebase.database
-        val myRef = database.getReference("message")
+        val myRef = database.getReference("message").child(id.toString())
 
 //        var chat = ChatData(nick,"hi", WhatTime().toString())
 //        myRef.setValue(chat)
@@ -41,7 +48,8 @@ class ChatActivity : AppCompatActivity() {
 
         //리사이클러뷰 어댑터 연결
         val rv = findViewById<RecyclerView>(R.id.recycler_view)
-        val rvAdapter = ChatAdapter(items , this,nick)
+        val rvAdapter = ChatAdapter(items , this, nick)
+
         rv.adapter = rvAdapter
         rv.layoutManager = LinearLayoutManager(this)
 
@@ -55,6 +63,7 @@ class ChatActivity : AppCompatActivity() {
                     add(ChatData(name.toString(),msg.toString(),stime.toString()))
                 }
                 rvAdapter.notifyDataSetChanged()
+
             }
             override fun onChildChanged(dataSnapshot: DataSnapshot, s: String?) {}
             override fun onChildRemoved(dataSnapshot: DataSnapshot) {}
@@ -74,6 +83,13 @@ class ChatActivity : AppCompatActivity() {
                 //스크롤 포지션
                 rv.scrollToPosition(items.size - 1)
                 viewbinding.utextmsg.setText("")
+
+                val secondFragment =SecondFragment()
+                val bundle = Bundle()
+                bundle.putString("id", id.toString())
+                secondFragment.arguments = bundle
+
+
            }
         }
     }

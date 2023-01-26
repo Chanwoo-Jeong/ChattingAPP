@@ -26,7 +26,7 @@
             app:srcCompat="@drawable/group_74" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/notename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -61,11 +61,11 @@
             android:layout_marginTop="6dp"
             android:textSize="12dp"
             android:textStyle="bold"
-            android:text="아래글에 차라나님이 관심있어요"
+            android:text="혹시 제가 3시에 시간이 되는데 어디서?"
             android:textColor="@color/black"
             android:textFontWeight="600"
             app:layout_constraintStart_toEndOf="@+id/messageImage"
-            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintTop_toBottomOf="@id/notename"
             />
 
         <TextView

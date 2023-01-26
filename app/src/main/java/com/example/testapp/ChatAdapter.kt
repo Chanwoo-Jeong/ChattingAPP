@@ -3,6 +3,7 @@ package com.example.testapp
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,8 +50,18 @@ class ChatAdapter(private val items: List<ChatData>, private val context: Contex
             //text 위치 조정정
            if(item.mynickName.equals(mynickName)){
                 Log.d("who", "its me")
+               msgBox.setGravity(Gravity.LEFT)
+
             } else {
                Log.d("who", "its other")
+               msgBox.setGravity(Gravity.RIGHT)
+
+               //drawable 설정
+//               containerRL = findViewById(R.id.idRLContainer)
+//
+//               // on below line we are setting background for
+//               // our relative layout on below line.
+//               containerRL.background = resources.getDrawable(R.drawable.back_drawable)
             }
 
         }

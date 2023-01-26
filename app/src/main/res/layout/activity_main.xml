@@ -10,7 +10,7 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:paddingBottom="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,10 +32,9 @@
             android:id="@id/msgBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:background="@color/white"
             android:text="쪽지"
-            android:textColor="@color/black"
+            android:textColor="@color/grey_200"
             android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

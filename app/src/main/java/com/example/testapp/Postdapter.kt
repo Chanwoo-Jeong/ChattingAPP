@@ -1,10 +1,14 @@
 package com.example.testapp
 
 import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 
@@ -39,8 +43,19 @@ class Postdapter(private val items: MutableList<PostData>, private val context: 
             val informationNick = itemView.findViewById<TextView>(R.id.information)
             informationNick.text = item.name
 
+
             val postContent = itemView.findViewById<TextView>(R.id.postContent)
             postContent.text = item.postContent
+
+            val postbox = itemView.findViewById<ConstraintLayout>(R.id.postbox)
+
+            postbox.setOnClickListener {
+                Log.d("informationNick.text",informationNick.text.toString())
+                val intent = Intent(context,ChatActivity::class.java)
+                intent.putExtra("id",informationNick.text)
+                context.startActivity(intent);
+
+            }
 
 
         }
