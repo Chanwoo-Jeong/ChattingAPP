@@ -1,15 +1,15 @@
 package com.example.testapp
 
 import android.content.Context
-import android.content.Intent
+import android.graphics.Color
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class ChatAdapter(private val items: List<ChatData>, private val context: Context, private val mynickName : String) :
@@ -37,6 +37,11 @@ class ChatAdapter(private val items: List<ChatData>, private val context: Contex
         return items.size
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(item: ChatData) {
 
@@ -55,13 +60,9 @@ class ChatAdapter(private val items: List<ChatData>, private val context: Contex
             } else {
                Log.d("who", "its other")
                msgBox.setGravity(Gravity.RIGHT)
-
                //drawable 설정
-//               containerRL = findViewById(R.id.idRLContainer)
-//
-//               // on below line we are setting background for
-//               // our relative layout on below line.
-//               containerRL.background = resources.getDrawable(R.drawable.back_drawable)
+              rv_msg.background = ContextCompat.getDrawable(context,R.drawable.chattingbackgroundother)
+              rv_msg.setTextColor(Color.parseColor("#FFFFFF"))
             }
 
         }

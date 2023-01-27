@@ -108,7 +108,7 @@
             android:layout_height="88dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:elevation="20dp"
             android:background="@drawable/messageround">
 
@@ -191,7 +191,7 @@
             android:layout_height="124dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:elevation="20dp"
             android:background="@drawable/messageround">
 
@@ -211,14 +211,35 @@
                 android:id="@+id/information"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="23dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
-                android:text="차라나"
+                android:layout_marginTop="23dp"
+                android:text="차라나  "
+                android:textColor="@color/grey_600"
                 android:textSize="12dp"
                 app:layout_constraintStart_toEndOf="@+id/postimage"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" |  위치 비밀  "
+                android:textSize="12dp"
+                app:layout_constraintStart_toEndOf="@+id/information"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="23dp"/>
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="|  10분전"
+                android:textSize="12dp"
+                app:layout_constraintStart_toEndOf="@+id/location"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="23dp"/>
+
+
 
             <TextView
                 android:id="@+id/postContent"
