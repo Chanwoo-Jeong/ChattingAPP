@@ -3,19 +3,11 @@ package com.example.testapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapp.databinding.SocketMainBinding
-import kotlinx.coroutines.Dispatchers.IO
-import okhttp3.WebSocket
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.net.URISyntaxException
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
-import io.socket.client.IO;
 import io.socket.client.Socket;
 
 //
@@ -47,7 +39,7 @@ class SocketActivity : AppCompatActivity() {
 
         //리사이클러뷰 어댑터 연결
         val rv = findViewById<RecyclerView>(R.id.recycler_view)
-        val rvAdapter = RVAdapter(items , this)
+        val rvAdapter = SocketRVAdapter(items , this)
         rv.adapter = rvAdapter
         rv.layoutManager = LinearLayoutManager(this)
 

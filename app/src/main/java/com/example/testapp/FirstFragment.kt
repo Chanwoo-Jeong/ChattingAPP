@@ -35,9 +35,10 @@ class FirstFragment : Fragment() {
 
         val bundle = arguments
         if(bundle != null) {
+            val id: String? = this.arguments?.getString("id")
             val name: String? = this.arguments?.getString("name")
             val postContent: String? = this.arguments?.getString("postContent")
-            var postRoom = PostData(name.toString(),postContent.toString())
+            var postRoom = PostData(id.toString(),name.toString(),postContent.toString())
             myRef.push().setValue(postRoom)
         } else{
             Log.d("error", "번들이 비었습니다.")
@@ -55,11 +56,12 @@ class FirstFragment : Fragment() {
         myRef.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
                 var postRoom =  dataSnapshot.getValue(PostData::class.java)
+                var id = postRoom?.id
                 var name = postRoom?.name
                 var postContent = postRoom?.postContent
 
                 items.apply {
-                    add(PostData(name.toString(), postContent.toString()))
+                    add(PostData(id.toString(),name.toString(), postContent.toString()))
                 }
                 rvAdapter.notifyDataSetChanged()
             }

@@ -12,7 +12,7 @@ import com.example.testapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var viewbinding: ActivityMainBinding
     private lateinit var getResultText: ActivityResultLauncher<Intent>
-
+    var id : String = "three"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
 
                 val firstFragment =FirstFragment()
                 val bundle = Bundle()
+                bundle.putString("id", id)
                 bundle.putString("name", name.toString())
                 bundle.putString("postContent", postContent.toString())
                 firstFragment.arguments = bundle

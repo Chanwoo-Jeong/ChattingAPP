@@ -11,8 +11,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
-class Notedapter(private val items: MutableList<ChatData>, private val context: Context) :
+class Notedapter(private val items: MutableList<NoteData>, private val context: Context) :
     RecyclerView.Adapter<Notedapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Notedapter.ViewHolder {
@@ -38,14 +40,21 @@ class Notedapter(private val items: MutableList<ChatData>, private val context: 
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bindItems(item: ChatData) {
+        fun bindItems(item: NoteData) {
 
-            val nick = itemView.findViewById<TextView>(R.id.notename)
-            nick.text = item.mynickName
+            val notebox = itemView.findViewById<ConstraintLayout>(R.id.notebox)
+            val from = itemView.findViewById<TextView>(R.id.notename)
+            val to = itemView.findViewById<TextView>(R.id.messageContent)
 
-            val newmsg = itemView.findViewById<TextView>(R.id.messageContent)
-            newmsg.text = item.msg
+            from.text = item.from
+            to.text = item.to
 
+            notebox.setOnClickListener {
+                val intent = Intent(context,ChatActivity::class.java)
+                intent.putExtra("id",item.to)
+                intent.putExtra("from",item.from)
+                context.startActivity(intent);
+            }
         }
     }
 }

@@ -26,71 +26,125 @@ fun WhatTime(): String? {
 class ChatActivity : AppCompatActivity() {
     private lateinit var viewbinding: ActivityMainUchatBinding
     private lateinit var aviewbinding : ActivityMainBinding
-    var nick : String = "nick1"
+    var nick : String = "three"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val intent = intent
         val id = intent.getStringExtra("id")
-        Log.d("ChatActivity name", id.toString())
+        val from = intent.getStringExtra("from")
 
         viewbinding = ActivityMainUchatBinding.inflate(layoutInflater)
         setContentView(viewbinding.root)
-
         // Write a message to the database
         val database = Firebase.database
-        val myRef = database.getReference("message").child(id.toString())
 
-//        var chat = ChatData(nick,"hi", WhatTime().toString())
-//        myRef.setValue(chat)
+        if (from != null) {
+            if(from.isNotEmpty()){
+                Log.d("from",from)
+                val database = Firebase.database
+                val myRef = database.getReference("message").child(id.toString()+from.toString())
+                val NmyRef = database.getReference("Note")
 
-        val items: ArrayList<ChatData> = arrayListOf()
+                val items: ArrayList<ChatData> = arrayListOf()
+                val noteitems: ArrayList<NoteData> = arrayListOf()
 
-        //리사이클러뷰 어댑터 연결
-        val rv = findViewById<RecyclerView>(R.id.recycler_view)
-        val rvAdapter = ChatAdapter(items , this, nick)
+                //리사이클러뷰 어댑터 연결
+                val rv = findViewById<RecyclerView>(R.id.recycler_view)
+                val rvAdapter = ChatAdapter(items , this, nick)
+                val Notedapter = Notedapter(noteitems , this)
 
-        rv.adapter = rvAdapter
-        rv.layoutManager = LinearLayoutManager(this)
+                rv.adapter = rvAdapter
+                rv.layoutManager = LinearLayoutManager(this)
 
-        myRef.addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
-                var Chatd =  dataSnapshot.getValue(ChatData::class.java)
-                var name = Chatd?.mynickName
-                var msg = Chatd?.msg
-                var stime = Chatd?.time
-                items.apply {
-                    add(ChatData(name.toString(),msg.toString(),stime.toString()))
+                myRef.addChildEventListener(object : ChildEventListener {
+                    override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
+                        var Chatd =  dataSnapshot.getValue(ChatData::class.java)
+                        var name = Chatd?.mynickName
+                        var msg = Chatd?.msg
+                        var stime = Chatd?.time
+                        items.apply {
+                            add(ChatData(name.toString(),msg.toString(),stime.toString()))
+                        }
+                        rvAdapter.notifyDataSetChanged()
+
+                    }
+                    override fun onChildChanged(dataSnapshot: DataSnapshot, s: String?) {}
+                    override fun onChildRemoved(dataSnapshot: DataSnapshot) {}
+                    override fun onChildMoved(dataSnapshot: DataSnapshot, s: String?) {}
+                    override fun onCancelled(databaseError: DatabaseError) {}
+                })
+
+                viewbinding.umsgbtn.setOnClickListener {
+                    val time:String = WhatTime().toString()
+                    val msg:String = viewbinding.utextmsg.text.toString()
+                    if(msg.isNotEmpty()) {
+                        var chatnew = ChatData(id.toString(), msg, time)
+                        myRef.push().setValue(chatnew)
+                        rvAdapter.notifyDataSetChanged()
+
+                        var note = NoteData(id.toString(),from)
+                        NmyRef.push().setValue(note)
+                        Notedapter.notifyDataSetChanged()
+                        //스크롤 포지션
+                        rv.scrollToPosition(items.size - 1)
+                        viewbinding.utextmsg.setText("")
+                    }
                 }
-                rvAdapter.notifyDataSetChanged()
-
             }
-            override fun onChildChanged(dataSnapshot: DataSnapshot, s: String?) {}
-            override fun onChildRemoved(dataSnapshot: DataSnapshot) {}
-            override fun onChildMoved(dataSnapshot: DataSnapshot, s: String?) {}
-            override fun onCancelled(databaseError: DatabaseError) {}
-        })
+        } else{
+            val database = Firebase.database
+            val myRef = database.getReference("message").child(id.toString()+nick)
+            val NmyRef = database.getReference("Note")
 
+            val items: ArrayList<ChatData> = arrayListOf()
+            val noteitems: ArrayList<NoteData> = arrayListOf()
 
+            //리사이클러뷰 어댑터 연결
+            val rv = findViewById<RecyclerView>(R.id.recycler_view)
+            val rvAdapter = ChatAdapter(items , this, nick)
+            val Notedapter = Notedapter(noteitems , this)
 
-        viewbinding.umsgbtn.setOnClickListener {
-            val time:String = WhatTime().toString()
-            val msg:String = viewbinding.utextmsg.text.toString()
-            if(msg.isNotEmpty()) {
-                var chatnew = ChatData(nick, msg, time)
-                myRef.push().setValue(chatnew)
-                rvAdapter.notifyDataSetChanged()
-                //스크롤 포지션
-                rv.scrollToPosition(items.size - 1)
-                viewbinding.utextmsg.setText("")
+            rv.adapter = rvAdapter
+            rv.layoutManager = LinearLayoutManager(this)
 
-                val secondFragment =SecondFragment()
-                val bundle = Bundle()
-                bundle.putString("id", id.toString())
-                secondFragment.arguments = bundle
+            myRef.addChildEventListener(object : ChildEventListener {
+                override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
+                    var Chatd =  dataSnapshot.getValue(ChatData::class.java)
+                    var name = Chatd?.mynickName
+                    var msg = Chatd?.msg
+                    var stime = Chatd?.time
+                    items.apply {
+                        add(ChatData(name.toString(),msg.toString(),stime.toString()))
+                    }
+                    rvAdapter.notifyDataSetChanged()
 
+                }
+                override fun onChildChanged(dataSnapshot: DataSnapshot, s: String?) {}
+                override fun onChildRemoved(dataSnapshot: DataSnapshot) {}
+                override fun onChildMoved(dataSnapshot: DataSnapshot, s: String?) {}
+                override fun onCancelled(databaseError: DatabaseError) {}
+            })
 
-           }
+            viewbinding.umsgbtn.setOnClickListener {
+                val time:String = WhatTime().toString()
+                val msg:String = viewbinding.utextmsg.text.toString()
+                if(msg.isNotEmpty()) {
+                    var chatnew = ChatData(nick, msg, time)
+                    myRef.push().setValue(chatnew)
+                    rvAdapter.notifyDataSetChanged()
+
+                    var note = NoteData(nick,id.toString())
+                    NmyRef.push().setValue(note)
+                    Notedapter.notifyDataSetChanged()
+                    //스크롤 포지션
+                    rv.scrollToPosition(items.size - 1)
+                    viewbinding.utextmsg.setText("")
+                }
+            }
         }
+
+
+
     }
 }

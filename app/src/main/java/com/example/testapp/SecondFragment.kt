@@ -23,7 +23,7 @@ import com.google.firebase.ktx.Firebase
 class SecondFragment : Fragment() {
 
         private lateinit var viewBinding: FragmentSecondBinding
-
+        var id : String = "three"
         override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -31,48 +31,39 @@ class SecondFragment : Fragment() {
         ): View {
             viewBinding = FragmentSecondBinding.inflate(layoutInflater)
 
-            val bundle = arguments
-            val items: ArrayList<ChatData> = arrayListOf()
+//            val bundle = arguments
+            val noteitems: ArrayList<NoteData> = arrayListOf()
 
             var rv = viewBinding.recyclerNote
-            val rvAdapter = Notedapter(items,requireActivity())
+            val rvAdapter = Notedapter(noteitems,requireActivity())
             //리사이클러뷰 어댑터 연결
             rv.adapter = rvAdapter
             rv.layoutManager = LinearLayoutManager(requireActivity())
-            if(bundle != null) {
-
-                val idname: String? = this.arguments?.getString("id")
+//            if(bundle != null) {
 
                 // Write a message to the database
                 val database = Firebase.database
-                val myRef = database.getReference("message").child(idname.toString())
+                val myRef = database.getReference("Note")
 
                 myRef.addChildEventListener(object : ChildEventListener {
                     override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
-                        var chated =  dataSnapshot.getValue(ChatData::class.java)
-                        var name = chated?.mynickName
-                        var newmsg = chated?.msg
-                        var time = chated?.time
-                        Log.d("newmsg",newmsg.toString())
+                        var Note =  dataSnapshot.getValue(NoteData::class.java)
+                        var from = Note?.from
+                        var to = Note?.to
 
-                        items.apply {
-                            add(ChatData(name.toString(), newmsg.toString(),""))
+                        if(from != id && to == id) {
+                            noteitems.apply {
+                                add(NoteData(from.toString(), to.toString()))
+                            }
+                            rvAdapter.notifyDataSetChanged()
                         }
-                        rvAdapter.notifyDataSetChanged()
-
                     }
                     override fun onChildChanged(dataSnapshot: DataSnapshot, s: String?) {}
                     override fun onChildRemoved(dataSnapshot: DataSnapshot) {}
                     override fun onChildMoved(dataSnapshot: DataSnapshot, s: String?) {}
                     override fun onCancelled(databaseError: DatabaseError) {}
                 })
-            } else{
-                Log.d("error", "번들이 비었습니다.")
-            }
 
-
-
-//        val myRef2 = database.getReference("postRoom").child("room")
 
 
             return  viewBinding.root

@@ -30,19 +30,22 @@ class Postdapter(private val items: MutableList<PostData>, private val context: 
         // 뷰홀더가 재활용될때 실행되는 메소드 작성
         holder.bindItems(items[position])
 
-
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(item: PostData) {
 
+            val id =  item.id
+
             val informationNick = itemView.findViewById<TextView>(R.id.information)
             informationNick.text = item.name
-
 
             val postContent = itemView.findViewById<TextView>(R.id.postContent)
             postContent.text = item.postContent
@@ -50,11 +53,9 @@ class Postdapter(private val items: MutableList<PostData>, private val context: 
             val postbox = itemView.findViewById<ConstraintLayout>(R.id.postbox)
 
             postbox.setOnClickListener {
-                Log.d("informationNick.text",informationNick.text.toString())
                 val intent = Intent(context,ChatActivity::class.java)
-                intent.putExtra("id",informationNick.text)
+                intent.putExtra("id",id)
                 context.startActivity(intent);
-
             }
 
 
